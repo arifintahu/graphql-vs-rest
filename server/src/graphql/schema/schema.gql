@@ -1,0 +1,173 @@
+schema {
+	query : Query
+	mutation : Mutation
+}
+
+type Query {
+	userRead : [User]
+	userLogin(form: LoginForm): String
+	userCheck: User
+	questionRead(form: QuestionQuery): [Question]
+	examRead(form: ExamQuery): [Exam]
+	subjectRead : [SubjectDetail]
+	teacherRead : [Teacher]
+	roomRead : [Room]
+}
+
+type Mutation {
+	userRegister(form: UserForm): User
+	userUpdate(id: Int!, form: UserForm): Boolean
+	userDelete(id: Int!): Boolean
+	questionCreate(form: QuestionForm): Boolean
+	questionUpdate(id: Int!, form: QuestionForm): Boolean
+	questionDelete(id: Int!): Boolean
+	examCreate(form: ExamCreateForm): Boolean
+	examInsert(form: ExamInsertForm): Boolean
+}
+
+type User {
+	id : Int
+	username : String
+	email: String
+	role: String
+	password: String
+}
+
+type Question {
+	id : Int
+	teacher : Teacher
+	subject : Subject
+	topic : Topic
+	subtopic : Subtopic
+	id_question : String
+	question_type : Int
+	question_scenario : String
+	question_text : String
+	answer_a : String
+	answer_b : String
+	answer_c : String
+	answer_d : String
+	answer_e : String
+	answer_key : String
+}
+
+type Teacher {
+	id : Int
+	teacher_nip : String
+	teacher_name : String
+	program : String
+}
+
+type Subject {
+	id_subject : String
+	subject_name : String
+	credits : Int
+}
+
+type Topic {
+	id_topic : Int
+	topic_name : String 
+}
+
+type Subtopic {
+	id : Int
+	subtopic_name : String
+}
+
+type Exam {
+	exam_code : String
+	id_room : Int
+	room : Room
+	date : String
+	time : String
+	password : String
+	duration : Int
+	id_teacher : Int
+	teacher : Teacher
+	question : [QuestionExam]
+}
+
+type QuestionExam {
+	id_exam : Int
+	id_question : String
+	detail : Question
+}
+
+type Room {
+	id_room : Int
+	room_name : String
+	building_name : String
+	exam_capacity : Int
+	room_type : String
+}
+
+type SubjectDetail {
+	id_subject : String
+	subject_name : String
+	credits : Int
+	semester : Int
+	packet : String
+	cur_year : Int
+	topic : [TopicDetail]
+}
+
+type TopicDetail {
+	id_topic : Int
+	topic_name : String
+	subtopic : [Subtopic]
+}
+
+input UserForm {
+	username : String
+	email: String
+	role: String
+	password: String
+}
+
+input LoginForm {
+	username : String
+	password : String
+}
+
+input QuestionQuery {
+	id : Int
+	id_topic : Int
+	id_subtopic: Int
+	id_subject: String
+	id_teacher: Int
+}
+
+input QuestionForm {
+	id_teacher : Int
+	id_subject : String
+	id_topic : Int
+	id_subtopic : Int
+	question_type : Int
+	question_scenario : String
+	question_text : String
+	answer_a : String
+	answer_b : String
+	answer_c : String
+	answer_d : String
+	answer_e : String
+	answer_key : String
+}
+
+input ExamQuery {
+	exam_code : String
+}
+
+input ExamCreateForm {
+	exam_code : String
+	id_room : Int
+	date : String
+	time : String
+	password : String
+	duration : Int
+	id_teacher : Int
+}
+
+input ExamInsertForm {
+	id_question : String
+	exam_code : String
+}
