@@ -8,8 +8,8 @@ import { Request, Response } from "express";
 
 export async function createContentService(req: Request, res: Response){
     let data = req.body;
-    if(!data.user_id || !data.title || 
-        !data.id_teacher || !data.body){
+    console.log(req);
+    if(!data.user_id || !data.title  || !data.body){
         res.status(400).json({ 
             ok : false,
             msg : 'all parameters must be filled' 

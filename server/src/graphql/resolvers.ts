@@ -8,55 +8,33 @@ import {
 } from './resolvers/user.resolver';
 
 import { 
-	questionRead,
-	questionCreate,
-	questionUpdate,
-	questionDelete
-} from './resolvers/question.resolver';
+	contentCreate,
+	contentRead,
+	contentUpdate,
+	contentDelete
+} from './resolvers/content.resolver';
 
 import { 
-	Question,
-	Exam,
-	QuestionExam,
-	SubjectDetail,
-	TopicDetail,
-	subjectRead,
-	teacherRead,
-	roomRead 
-} from './resolvers/table.resolver';
-
-import { 
-	examRead,
-	examCreate,
-	examInsert 
-} from './resolvers/exam.resolver';
-
+	contentTagCreate,
+	Content
+} from './resolvers/content-tag.resolver';
 
 export const resolvers = {
 	Query : {
 		userRead : userRead,
 		userLogin : userLogin,
 		userCheck : userCheck,
-		questionRead : questionRead,
-		examRead : examRead,
-		subjectRead : subjectRead,
-		teacherRead : teacherRead,
-		roomRead : roomRead
+		contentRead : contentRead
 	},
 	Mutation : {
 		userRegister : userRegister,
 		userUpdate : userUpdate,
 		userDelete : userDelete,
-		questionCreate : questionCreate,
-		questionUpdate : questionUpdate,
-		questionDelete : questionDelete,
-		examCreate : examCreate,
-		examInsert : examInsert
+		contentCreate : contentCreate,
+		contentUpdate : contentUpdate,
+		contentDelete : contentDelete,
+		contentTagCreate : contentTagCreate
 	},
-	Question,
-	Exam,
-	QuestionExam,
-	SubjectDetail,
-	TopicDetail
+	Content
 };
 
