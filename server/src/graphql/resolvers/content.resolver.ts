@@ -12,7 +12,7 @@ export async function contentCreate( root, { form }, ctx){
 		return;
 	}
 	const result = await createContent(form);
-	return result[0];
+	return result;
 }
 
 export async function contentRead( root, { form }, ctx){

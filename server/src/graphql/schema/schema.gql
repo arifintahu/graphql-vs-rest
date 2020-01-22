@@ -16,7 +16,7 @@ type Mutation {
 	userRegister(form: UserForm): User
 	userUpdate(id: Int!, form: UserForm): Boolean
 	userDelete(id: Int!): Boolean
-	contentCreate(form: ContentForm): Boolean
+	contentCreate(form: ContentForm): Content
 	contentUpdate(id: Int!, form: ContentForm): Boolean
 	contentDelete(id: Int!): Boolean
 	contentTagCreate(form: ContentTagForm): Boolean

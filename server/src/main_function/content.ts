@@ -2,7 +2,8 @@ import { Content } from "../model/orm";
 
 export async function createContent(content){
     let result = await Content.create(content, {
-        raw : true
+        raw : true,
+        fields : ['id', 'user_id', 'title', 'body', 'createdAt', 'updatedAt']
     });
     return(result);
 }

@@ -15,7 +15,7 @@
 				</div>
 			</div>
 			<div class="modal-footer d-flex justify-content-center">
-				<button class="btn" style="font-family:'Belleza',Arial;background-color:#F48024;color:white;" v-on:click="login($event)">Submit</button>
+				<button class="btn" style="font-family:'Belleza',Arial;background-color:#F48024;color:white;" v-on:click.prevent="login">Submit</button>
 			</div>
 		</div>
 	</div>
@@ -33,8 +33,7 @@
 			}
 		},
 		methods : {
-			login : function (event) {
-				event.preventDefault();
+			login : function () {
 				this.$apollo.query({
 					query: gql`query login($form:LoginForm){
 	  					userLogin(form:$form )

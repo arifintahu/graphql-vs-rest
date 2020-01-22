@@ -7,6 +7,7 @@ const checkToken = {
 			.query({
 				query: gql `query { 
 					userCheck {
+						id
 						username
 						role
 					}
